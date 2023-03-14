@@ -2,31 +2,43 @@ const path = require('path');
 const fs = require('node:fs');
 const core = require('@actions/core');
 
-// C:\Users\ => C\:\\Users\\
+// escapeRegExp :: string => string
+// escape all characters with special meanings in regexp
 const escapeRegExp = (s) =>
 	s.replace(/[:.*+?^${}()|\/[\]\\]/g, "\\$&");
 
-
-// ${{ key }}, ${{var}}, ${{ aggqq43g3qg4 }}
+// variable :: string => RegExp
+// create regex to match ${{ key }}
 const variable = (key) =>
 	new RegExp("\\${{\\s*?" + key + "\\s*?}}", "g");
 
-
-// default value set in /action.yml
-const root = core.getInput('root', { required: false });
-
+// templatePath :: string
 const templatePath = path.join(__dirname, "gcc_matcher.jsontemplate");
 
-const parsed = 
-	fs.readFileSync(templatePath, "ascii")
-		.replace(variable("BASE"), escapeRegExp(root));
-
+// matcherPath :: string
 const matcherPath = path.join(__dirname, "gcc_matcher.json");
 
-fs.writeFileSync(matcherPath, parsed);
+// parse :: IO => IO => Error | null
+const parse = (templatePath) => (matcherPath) => {
+	fs.readFile(templatePath, 'utf-8', (err, content) => {
+		if (err) throw err;
 
-console.log('::add-matcher::' + matcherPath);
+		const root = core.getInput('root', { required: false });
 
-/* for testing */ 
+		const parsed = content.replace(variable("BASE"), escapeRegExp(root));
+
+		fs.writeFile(matcherPath, parsed, (err) => {
+			if (err) throw err;
+
+			console.log('::add-matcher::' + matcherPath);
+		});
+	});
+}
+
+// main:
+parse(templatePath)(matcherPath);
+
+
+// for testing
 exports.escapeRegExp = escapeRegExp
 exports.variable = variable;
