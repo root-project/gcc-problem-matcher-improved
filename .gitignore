@@ -1,2 +1,4 @@
 node_modules/
 */gcc_matcher.json
+*/a.out
+.vscode/
