@@ -2845,32 +2845,50 @@ const path = __nccwpck_require__(17);
 const fs = __nccwpck_require__(561);
 const core = __nccwpck_require__(127);
 
-// C:\Users\ => C\:\\Users\\
+// escapeRegExp :: string => string
+// escape all characters with special meanings in regexp
 const escapeRegExp = (s) =>
-	s.replace(/[:.*+?^${}()|\/[\]\\]/g, "\\$&");
+	s.replace(/[/\-^$*+?.()|[\]{}]/g, "\\$&");
 
-
-// ${{ key }}, ${{var}}, ${{ aggqq43g3qg4 }}
+// variable :: string => RegExp
+// create regex to match ${{ key }}
 const variable = (key) =>
 	new RegExp("\\${{\\s*?" + key + "\\s*?}}", "g");
 
-
-// default value set in /action.yml
-const root = core.getInput('root', { required: false });
-
+// templatePath :: string
 const templatePath = __nccwpck_require__.ab + "gcc_matcher.jsontemplate";
 
-const parsed = 
-	fs.readFileSync(__nccwpck_require__.ab + "gcc_matcher.jsontemplate", "ascii")
-		.replace(variable("BASE"), escapeRegExp(root));
-
+// matcherPath :: string
 const matcherPath = __nccwpck_require__.ab + "gcc_matcher.json";
 
-fs.writeFileSync(__nccwpck_require__.ab + "gcc_matcher.json", parsed);
+// rootdir :: string
+const rootdir = () =>
+	core.getInput('build-directory', {required: false}) || "/build";
 
-console.log('::add-matcher::' + matcherPath);
+// parse :: IO() => IO() => Error | null
+const parse = (templatePath) => (matcherPath) => {
+	const r = rootdir();
 
-/* for testing */ 
+	console.log(r);
+
+	const content = fs.readFileSync(templatePath, 'utf-8');
+
+	const parsed = content.replace(variable("BASE"), escapeRegExp(rootdir()));
+
+	fs.writeFileSync(matcherPath, parsed);
+
+	console.log('::add-matcher::' + matcherPath);
+}
+
+// main:
+try {
+	parse(__nccwpck_require__.ab + "gcc_matcher.jsontemplate")(__nccwpck_require__.ab + "gcc_matcher.json");
+} catch (err) {
+	core.setFailed(`Action failed with error ${err}`)
+}
+
+
+// for testing
 exports.escapeRegExp = escapeRegExp
 exports.variable = variable;
 })();

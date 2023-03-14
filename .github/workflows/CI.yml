@@ -1,0 +1,33 @@
+name: CI
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  run-tests:
+    if: github.repository_owner == 'olemorud'
+
+    permissions:
+      contents: read
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: npm install
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Apply problem matcher
+        uses: ./
+        with:
+          build-directory: build/
+      
+      - name: Test problem matcher
+        run: |
+          ls
+          cat dist/gcc_matcher.json
+          cp -r test build
+          gcc -Wall -Wextra -O0 build/generate_warnings.c

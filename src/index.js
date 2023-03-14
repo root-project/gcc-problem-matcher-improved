@@ -5,7 +5,7 @@ const core = require('@actions/core');
 // escapeRegExp :: string => string
 // escape all characters with special meanings in regexp
 const escapeRegExp = (s) =>
-	s.replace(/[:.*+?^${}()|\/[\]\\]/g, "\\$&");
+	s.replace(/[/\-^$*+?.()|[\]{}]/g, "\\$&");
 
 // variable :: string => RegExp
 // create regex to match ${{ key }}
@@ -18,25 +18,31 @@ const templatePath = path.join(__dirname, "gcc_matcher.jsontemplate");
 // matcherPath :: string
 const matcherPath = path.join(__dirname, "gcc_matcher.json");
 
-// parse :: IO => IO => Error | null
+// rootdir :: string
+const rootdir = () =>
+	core.getInput('build-directory', {required: false});
+
+// parse :: IO() => IO() => Error | null
 const parse = (templatePath) => (matcherPath) => {
-	fs.readFile(templatePath, 'utf-8', (err, content) => {
-		if (err) throw err;
+	const r = rootdir();
 
-		const root = core.getInput('root', { required: false });
+	console.log(r);
 
-		const parsed = content.replace(variable("BASE"), escapeRegExp(root));
+	const content = fs.readFileSync(templatePath, 'utf-8');
 
-		fs.writeFile(matcherPath, parsed, (err) => {
-			if (err) throw err;
+	const parsed = content.replace(variable("BASE"), escapeRegExp(rootdir()));
 
-			console.log('::add-matcher::' + matcherPath);
-		});
-	});
+	fs.writeFileSync(matcherPath, parsed);
+
+	console.log('::add-matcher::' + matcherPath);
 }
 
 // main:
-parse(templatePath)(matcherPath);
+try {
+	parse(templatePath)(matcherPath);
+} catch (err) {
+	core.setFailed(`Action failed with error ${err}`)
+}
 
 
 // for testing

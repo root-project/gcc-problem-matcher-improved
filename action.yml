@@ -9,10 +9,9 @@ branding:
   color: yellow
 
 inputs:
-  root:
+  build-directory:
     description: 'base directory for build, e.g. /workdir/build'
-    required: false
-    default: ''
+    required: true
 
 runs:
   using: 'node16'
