@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('node:fs');
-//const core = require('@actions/core');
+const core = require('@actions/core');
 
 // C:\Users\ => C\:\\Users\\
 const escapeRegExp = (s) =>
@@ -13,8 +13,7 @@ const variable = (key) =>
 
 
 // default value set in /action.yml
-// const root = core.getInput('root', { required: false });
-root = '/tmp/workspace';
+const root = core.getInput('root', { required: false });
 
 const templatePath = path.join(__dirname, "gcc_matcher.jsontemplate");
 

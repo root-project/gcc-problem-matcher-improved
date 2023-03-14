@@ -1,0 +1,25 @@
+{
+  "name": "gcc-problem-matcher",
+  "version": "1.0.0",
+  "description": "Creates annotations for warnings and errors in gcc builds.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olemorud/gcc-problem-matcher.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/olemorud/gcc-problem-matcher/issues"
+  },
+  "homepage": "https://github.com/olemorud/gcc-problem-matcher#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.0"
+  }
+}
