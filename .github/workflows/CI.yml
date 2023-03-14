@@ -23,7 +23,7 @@ jobs:
       - name: Apply problem matcher
         uses: ./
         with:
-          build-directory: build/
+          build-directory: ""
       
       - name: Test problem matcher
         run: |

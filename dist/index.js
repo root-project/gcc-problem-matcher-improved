@@ -2863,7 +2863,7 @@ const matcherPath = __nccwpck_require__.ab + "gcc_matcher.json";
 
 // rootdir :: string
 const rootdir = () =>
-	core.getInput('build-directory', {required: false}) || "/build";
+	core.getInput('build-directory', {required: false});
 
 // parse :: IO() => IO() => Error | null
 const parse = (templatePath) => (matcherPath) => {
