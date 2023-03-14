@@ -1,0 +1,19 @@
+name: GCC Problem Matcher
+
+description: Get annotations for warnings and errors on builds using gcc
+
+author: Ole Morud
+
+branding:
+  icon: search
+  color: yellow
+
+inputs:
+  root:
+    description: 'base directory for build, e.g. /workdir/build'
+    required: false
+    default: ''
+
+runs:
+  using: 'node16'
+  main: 'src/index.js'
