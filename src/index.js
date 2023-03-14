@@ -21,7 +21,7 @@ const matcherPath = path.join(__dirname, "gcc_matcher.json");
 // rootdir :: string
 const rootdir = core.getInput('build-directory', {required: false});
 
-// parse :: IO() => IO() => Error | null
+// parse :: string => string => Error | null
 const parse = (templatePath) => (matcherPath) => {
 	const content = fs.readFileSync(templatePath, 'utf-8');
 

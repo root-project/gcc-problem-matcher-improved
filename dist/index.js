@@ -2862,18 +2862,13 @@ const templatePath = __nccwpck_require__.ab + "gcc_matcher.jsontemplate";
 const matcherPath = __nccwpck_require__.ab + "gcc_matcher.json";
 
 // rootdir :: string
-const rootdir = () =>
-	core.getInput('build-directory', {required: false});
+const rootdir = core.getInput('build-directory', {required: false});
 
-// parse :: IO() => IO() => Error | null
+// parse :: string => string => Error | null
 const parse = (templatePath) => (matcherPath) => {
-	const r = rootdir();
-
-	console.log(r);
-
 	const content = fs.readFileSync(templatePath, 'utf-8');
 
-	const parsed = content.replace(variable("BASE"), escapeRegExp(rootdir()));
+	const parsed = content.replace(variable("BASE"), escapeRegExp(rootdir));
 
 	fs.writeFileSync(matcherPath, parsed);
 
