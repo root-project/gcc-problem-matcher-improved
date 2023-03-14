@@ -1,20 +1,18 @@
-#include <limits.h>
+x;
 
-int bad_code(float n) {
+bad_code(float n) {
 
     int small[3];
 
     char index = 10;
 
-    int x = small[index];
-
-    double promoted = 3.14159 * n * n;
+    x = small[index];
 
     return bad_code(x);
 }
 
 
-int main() {
+main() {
 
-    printf("%s %s", bad_code(1.0f));
+    printf("%f %s", bad_code(1.0f));
 }
