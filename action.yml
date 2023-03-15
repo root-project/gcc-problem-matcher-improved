@@ -1,4 +1,4 @@
-name: GCC Problem Matcher
+name: GCC Problem Matcher Improved
 
 description: Get annotations for warnings and errors on builds using gcc
 
@@ -11,7 +11,7 @@ branding:
 inputs:
   build-directory:
     description: 'base directory for build, e.g. /workdir/build'
-    required: true
+    required: false
 
 runs:
   using: 'node16'
