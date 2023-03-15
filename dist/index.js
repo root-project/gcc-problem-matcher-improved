@@ -2848,7 +2848,7 @@ const core = __nccwpck_require__(127);
 // escapeRegExp :: string => string
 // escape all characters with special meanings in regexp
 const escapeRegExp = (s) =>
-	s.replace(/[/\-^$*+?.()|[\]{}]/g, "\\$&");
+	s.replace(/[/\-^$*+?.()|[\]{}]/g, "\\\\$&");
 
 // variable :: string => RegExp
 // create regex to match ${{ key }}
@@ -2859,7 +2859,7 @@ const variable = (key) =>
 const templatePath = __nccwpck_require__.ab + "gcc_matcher.jsontemplate";
 
 // matcherPath :: string
-const matcherPath = __nccwpck_require__.ab + "gcc_matcher.json";
+const outputPath = __nccwpck_require__.ab + "gcc_matcher.json";
 
 // rootdir :: string
 const rootdir = core.getInput('build-directory', {required: false});

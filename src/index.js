@@ -5,7 +5,7 @@ const core = require('@actions/core');
 // escapeRegExp :: string => string
 // escape all characters with special meanings in regexp
 const escapeRegExp = (s) =>
-	s.replace(/[/\-^$*+?.()|[\]{}]/g, "\\$&");
+	s.replace(/[/\-^$*+?.()|[\]{}]/g, "\\\\$&");
 
 // variable :: string => RegExp
 // create regex to match ${{ key }}
@@ -16,7 +16,7 @@ const variable = (key) =>
 const templatePath = path.join(__dirname, "gcc_matcher.jsontemplate");
 
 // matcherPath :: string
-const matcherPath = path.join(__dirname, "gcc_matcher.json");
+const outputPath = path.join(__dirname, "gcc_matcher.json");
 
 // rootdir :: string
 const rootdir = core.getInput('build-directory', {required: false});
@@ -34,7 +34,7 @@ const parse = (templatePath) => (matcherPath) => {
 
 // main:
 try {
-	parse(templatePath)(matcherPath);
+	parse(templatePath)(outputPath);
 } catch (err) {
 	core.setFailed(`Action failed with error ${err}`)
 }
