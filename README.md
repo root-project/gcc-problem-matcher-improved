@@ -1,7 +1,5 @@
 # GCC problem matcher
 
-Unstable release!
-
 Creates annotations for warnings and errors in gcc builds.
 
 ## Inputs
@@ -12,7 +10,13 @@ Creates annotations for warnings and errors in gcc builds.
 
 ## Example usage
 
-Just add this line anywhere before running the build step.
+Create annotations for builds done in the root directory
+
+```yaml
+    - uses: olemorud/gcc-problem-matcher@v1.0
+```
+
+Create annotations for builds done in directory `/workspace/build/`
 
 ```yaml
     - uses: olemorud/gcc-problem-matcher@master
