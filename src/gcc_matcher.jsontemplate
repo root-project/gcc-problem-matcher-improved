@@ -4,13 +4,12 @@
             "owner": "gcc-problem-matcher",
             "pattern": [
                 {
-                    "regexp": "^(${{ BASE }}\\/?)(.*?):(\\d+):(\\d*):?\\s+(?:fatal\\s+)?(warning|error):\\s+(.*)$",
-                    "fromPath": 1,
-                    "file": 2,
-                    "line": 3,
-                    "column": 4,
-                    "severity": 5,
-                    "message": 6
+                    "regexp": "^${{ BASE }}\\/?(.*?):(\\d+):(\\d*):?\\s+(?:fatal\\s+)?(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
                 }
             ]
         }
