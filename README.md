@@ -10,7 +10,7 @@ Creates annotations for warnings and errors in gcc builds.
 
 ## Example usage
 
-Create annotations for builds done in the root directory. Add this anywhere before starting the build.
+Create annotations for builds done in the default directory. Add this anywhere before starting the build.
 
 ```yaml
     - uses: olemorud/gcc-problem-matcher@v1.0
@@ -26,4 +26,8 @@ Create annotations for builds done in directory `/workspace/build/`
     - uses: olemorud/gcc-problem-matcher@master
       with:
         build-directory: /workspace/build/
+        
+    - name: Build
+      run: |
+         ...
 ```
