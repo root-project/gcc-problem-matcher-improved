@@ -2,11 +2,14 @@
 
 Creates annotations for warnings and errors in gcc builds.
 
+![image](https://user-images.githubusercontent.com/82065181/225906240-f3c88a58-60db-4237-932b-2cb107da6659.png)
+
+
 ## Inputs
 
 ### build-directory
 
-**Optional** Base directory for build. For builds done in a subdirectory, this should match that directory, otherwise the pattern match will not be able to point to the correct file.
+**Optional** Directory the build is running in. Matched errors will not be able to point to the correct file or create warnings in the `Files changed` overview unless this is correct.
 
 ## Example usage
 
