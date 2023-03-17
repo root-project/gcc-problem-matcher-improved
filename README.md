@@ -2,7 +2,8 @@
 
 Creates annotations for warnings and errors in gcc builds.
 
-![image](https://user-images.githubusercontent.com/82065181/225906240-f3c88a58-60db-4237-932b-2cb107da6659.png)
+![image](https://user-images.githubusercontent.com/82065181/225907856-336fa631-6520-44ce-bdf5-cf5780e45e40.png)
+
 
 
 ## Inputs
