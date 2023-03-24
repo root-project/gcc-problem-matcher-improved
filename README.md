@@ -1,6 +1,6 @@
 # GCC problem matcher
 
-![FOSSA shield](https://app.fossa.com/api/projects/git%2Bgithub.com%2Folemorud%2Fgcc-problem-matcher.svg?type=shield)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Folemorud%2Fgcc-problem-matcher.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Folemorud%2Fgcc-problem-matcher?ref=badge_shield)
 
 Creates annotations for warnings and errors in gcc builds.
 
