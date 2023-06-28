@@ -1,6 +1,6 @@
 # GCC problem matcher
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Folemorud%2Fgcc-problem-matcher.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Folemorud%2Fgcc-problem-matcher?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Froot-project%2Fgcc-problem-matcher-improved.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Froot-project%2Fgcc-problem-matcher-improved?ref=badge_shield)
 
 Creates annotations for warnings and errors in gcc builds.
 
@@ -19,7 +19,7 @@ Creates annotations for warnings and errors in gcc builds.
 Create annotations for builds done in the default directory. Add this anywhere before starting the build.
 
 ```yaml
-    - uses: olemorud/gcc-problem-matcher@v1.0
+    - uses: root-project/gcc-problem-matcher-improved@v1
     
     - name: Build
       run: |
@@ -29,7 +29,7 @@ Create annotations for builds done in the default directory. Add this anywhere b
 Create annotations for builds done in directory `/workspace/build/`
 
 ```yaml
-    - uses: olemorud/gcc-problem-matcher@master
+    - uses: root-project/gcc-problem-matcher-improved@v1
       with:
         build-directory: /workspace/build/
         

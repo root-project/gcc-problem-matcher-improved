@@ -4,7 +4,7 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   run-tests:
-    if: github.repository_owner == 'olemorud'
+    if: github.repository_owner == 'root-project'
 
     permissions:
       contents: read
