@@ -1,12 +1,17 @@
-# GCC problem matcher
+# Improved GCC Problem Matcher
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Froot-project%2Fgcc-problem-matcher-improved.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Froot-project%2Fgcc-problem-matcher-improved?ref=badge_shield)
 
-Creates annotations for warnings and errors in gcc builds.
+Creates annotations for compiler diagnostics (warnings and errors) when building your code.
 
 ![image](https://user-images.githubusercontent.com/82065181/225907856-336fa631-6520-44ce-bdf5-cf5780e45e40.png)
 
+## Do you prefer your workflow to fail?
 
+Suppose you don't like compiler warnings.
+Use the [Annotation Failure Action](https://github.com/root-project/annotation-failure-action)!
+It finds problem annotations created by the *Improved GCC Problem Matcher* and causes the workflow job to fail.
+This is way better than `-Werror` ("any warning is treated as a compilation error") because your build can complete and you can still run your test suite and collect potential test failures.
 
 ## Inputs
 
