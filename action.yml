@@ -1,4 +1,4 @@
-name: GCC Problem Matcher Improved
+name: Improved GCC Problem Matcher
 
 description: Get annotations for warnings and errors on builds using gcc
 
