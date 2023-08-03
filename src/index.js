@@ -29,7 +29,7 @@ const parse = (templatePath) => (matcherPath) => {
 
 	fs.writeFileSync(matcherPath, parsed);
 
-	console.log('::add-matcher::' + matcherPath);
+	console.log('::add-matcher::' + matcherPath.replaceAll('\\', '\\\\'));
 }
 
 // main:
