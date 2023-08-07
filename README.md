@@ -42,3 +42,16 @@ Create annotations for builds done in directory `/workspace/build/`
       run: |
          ...
 ```
+
+## Dev Internals
+
+### Directories
+
+`src/` contains the sources; `dist/` is what people use in production.
+To compile `src/` into `dist/` run `npm run build`.
+
+### Prerequisite packages for `npm run build`
+
+Install **`nvm`** through `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash` or similar, as decribed e.g. [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-3-installing-node-using-the-node-version-manager).
+Install **`npm`** by taking a recent version from the output of `nvm list-remote` and installing it through `nvm install v20` or similar.
+`npm run build` needs `ncc` which one needs to install through `npm i -g @vercel/ncc`.
